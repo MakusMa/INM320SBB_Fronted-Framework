@@ -1,0 +1,17 @@
+{
+  "name": "chunyin_ma_inm320-bootstrap",
+  "version": "1.0.0",
+  "scripts": {
+    "goservergo": "lite-server --baseDir=\"public\"",
+    "makusispoor": "sass --watch src/scss:public/assets/css",
+    "start": "concurrently \"npm run makusispoor\" \"npm run goservergo\""
+  },
+  "author": "Chun Yin Ma",
+  "license": "private",
+  "private": true,
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "lite-server": "^2.6.1",
+    "sass": "^1.77.8"
+  }
+}

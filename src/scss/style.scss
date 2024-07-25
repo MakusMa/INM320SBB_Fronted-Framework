@@ -1,0 +1,212 @@
+// Variables
+$primary-color: #635858;
+$text-color: #ffffff;
+$background-color: #fff;
+$accent-color: rgb(53, 42, 214);
+$light-gray: rgb(188, 188, 188);
+$border-color: #ccc;
+$hover-opacity: 0.6;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin absolute-position($top, $right, $bottom: auto, $left: auto) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+// Styles
+/* ------------------------ Sidebar ----------------------------*/
+.sidebar {
+  &-heading {
+    padding: 5px 15px;
+    opacity: $hover-opacity;
+  }
+}
+
+.dashboard-icon {
+  width: 30px;
+  height: 30px;
+  margin: 0 10px 10px 0;
+}
+
+.nav-link {
+  color: $text-color;
+  padding: 10px 20px;
+  opacity: $hover-opacity;
+
+  &:hover,
+  &:focus {
+    background-color: $primary-color;
+    color: $text-color;
+    border-radius: 4px;
+    opacity: $hover-opacity;
+  }
+}
+
+/* ------------------------ Icon ----------------------------*/
+i {
+  min-width: 20px;
+  margin-right: 8px;
+  text-align: center;
+}
+
+/* ------------------------ Overview ----------------------------*/
+p {
+  font-size: 20px;
+}
+
+/* ------------------------ Carboard ----------------------------*/
+.card {
+  border-radius: 8px;
+  margin-bottom: 30px;
+
+  &:hover {
+    border-color: $accent-color;
+    color: $accent-color;
+  }
+
+  &-body {
+    @include flex-center;
+    flex-direction: column;
+  }
+}
+
+/* ---------------------- UserProfile --------------------------*/
+.user-controls {
+  @include absolute-position(10px, 20px);
+  @include flex-center;
+}
+
+/* ------------------------ infoBox ----------------------------*/
+.info {
+  &-box {
+    background: $background-color;
+    padding: 10px;
+  }
+
+  &-item {
+    @include flex-center;
+    flex-direction: column;
+
+    h5 {
+      color: $light-gray;
+    }
+
+    p {
+      font-size: 30px;
+      font-weight: bold;
+      margin: 10px;
+    }
+  }
+}
+
+/* ---------------------- Unresolved item ---------------------- */
+tr:not(:last-child) td {
+  border-bottom: 1px solid $border-color;
+}
+
+.unresolved-title {
+  &.card-title {
+    @include absolute-position(5px, auto, auto, -10px);
+    font-size: 30px;
+    padding: 30px;
+  }
+
+  &.card-title + a {
+    @include absolute-position(20px, -10px);
+    padding: 30px;
+  }
+}
+
+.group-support {
+  align-self: flex-start;
+  font-size: 18px;
+  margin: 60px 0 0 5px;
+}
+
+/* ------------------------- Task ------------------------- */
+.title-container {
+  @include flex-center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.tasks-title {
+  align-self: flex-start;
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+.view-details {
+  align-self: flex-end;
+  margin-bottom: 6px;
+}
+
+.today-text {
+  align-self: flex-start;
+  margin: 10px 0 0 2px;
+  font-size: 18px;
+}
+
+/* ------------------------- Navbar ------------------------- */
+.navbar {
+  background-color: $background-color;
+}
+
+.nav-icon {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.user-name {
+  font-size: 15px;
+  color: #333;
+}
+
+/* ------------------------- Phone ------------------------- */
+@include mobile {
+  .p,
+  .desktop-only {
+    display: none;
+  }
+
+  .user-name {
+    color: $text-color;
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+
+  .nav-link {
+    padding: 8px 15px;
+  }
+
+  .equal-height-row > div {
+    width: 100%;
+  }
+
+  .graph-container {
+    margin-bottom: 15px;
+  }
+
+  .unresolved-title.card-title,
+  .unresolved-title.card-title + a,
+  .tasks-title,
+  .view-details {
+    position: relative;
+  }
+}
